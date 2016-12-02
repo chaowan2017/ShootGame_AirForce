@@ -11,6 +11,7 @@ class GameLevel():
         self.win = win
 
         self.__start(win)
+
        # self.fill(0)
        # self.blit( (0, 0, 0), (0, 0))
        # win.setBackground(self,(0, 0, 0))
@@ -25,13 +26,13 @@ class GameLevel():
             if self.Button_normal.clicked(p):
                 win.close()
 
-                self.speed=1
+                self.speed= 3
 
                 break
             elif self.Button_hard.clicked(p):
                 win.close()
 
-                self.speed=2
+                self.speed= 1
                 ##import mainGame.py
                 break
 

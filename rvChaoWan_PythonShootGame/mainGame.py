@@ -14,6 +14,7 @@ from Buttons import *
 from Level import *
 import pygame, Buttons
 import random
+from Characters import *
 import os
 import ctypes
 from GamePlayer import *
@@ -57,6 +58,9 @@ if __name__ == "__main__":
       win=GraphWin("Choose level",340, 300)
       win.setBackground(color_rgb(255,0,0))
       g_speed=GameLevel(win).speed
+      win=GraphWin("Choose characters",360,320)
+      win.setBackground(color_rgb(255,0,0))
+      g_speed=GameCharacters(win).speed
       screen = pygame.display.set_mode((480, 800), 0, 32)
       pygame.display.set_caption('AirCraft 2016 by Chao Wan')
 
@@ -145,8 +149,12 @@ while running:
         enemies1.add(enemy1)
     enemy_frequency += 1
     enemy_movespeed+=1
+    if score >= 5000:
+        enemy_frequency += 5
+        enemy_movespeed += 50
     if enemy_frequency >= 100:
         enemy_frequency = 0
+
 
     # MOVE BULLETS
     for bullet in player.bullets:
@@ -166,6 +174,8 @@ while running:
             break
         if enemy.rect.top > SCREEN_HEIGHT:
             enemies1.remove(enemy)
+
+
 
 
     enemies1_down = pygame.sprite.groupcollide(enemies1, player.bullets, 1, 1)
